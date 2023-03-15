@@ -27,7 +27,7 @@ function getData(folder) {
     const resp = JSON.parse(xhr.response);
     if (resp._embedded.items) {
       DATA[folder] = resp._embedded.items;
-      appendImg(folder, resp._embedded.items)
+      appendImg(folder, resp._embedded.items);
     }
   };
 
@@ -57,6 +57,7 @@ function appendImg(folder, elements) {
 }
 
 function setActive(folder) {
+  window.location.hash = folder;
   getData(folder);
   Array.prototype.forEach.call(
     document.querySelectorAll(".menu-item"),
@@ -66,4 +67,13 @@ function setActive(folder) {
     "underline";
 }
 
-setActive("bowtie");
+function navigate() {
+  const locationHash = window.location.hash;
+  if (locationHash) {
+    setActive(locationHash.substring(1));
+  } else {
+    setActive("bowtie");
+  }
+}
+
+navigate();
