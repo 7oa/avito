@@ -6,7 +6,14 @@ const FOLDERS = {
   gallery: "https://disk.yandex.ru/d/PpjBnhZsyDg67Q",
 };
 
+const DATA = {};
+
 function getData(folder) {
+  if (DATA[folder]) {
+    appendImg(folder, DATA[folder]);
+    return;
+  }
+
   const xhr = new XMLHttpRequest();
   const url = `https://cloud-api.yandex.net/v1/disk/public/resources?public_key=${FOLDERS[folder]}&preview_size=XL&limit=100`;
   xhr.open("GET", url);
@@ -18,7 +25,10 @@ function getData(folder) {
     }
 
     const resp = JSON.parse(xhr.response);
-    if (resp._embedded.items) appendImg(folder, resp._embedded.items);
+    if (resp._embedded.items) {
+      DATA[folder] = resp._embedded.items;
+      appendImg(folder, resp._embedded.items)
+    }
   };
 
   xhr.onprogress = function (event) {};
