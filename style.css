@@ -27,6 +27,13 @@ html {
   justify-content: center;
 }
 
+@media (max-width: 670px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .menu-item {
   cursor: pointer;
   margin: 10px;
