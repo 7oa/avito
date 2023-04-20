@@ -73,11 +73,11 @@ html {
 
 .label {
   position: absolute;
-  top: 0;
-  background-color: rgba(0,0,0,0.5);
+  top: 6px;
+  background-color: rgba(0,0,0,0.4);
   color: white;
   text-decoration: none;
-  padding: 3px 5px;
+  padding: 3px 5px 3px 7px;
 }
 
 @media (max-width: 670px) {
