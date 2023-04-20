@@ -41,7 +41,7 @@ function getData(folder) {
 function appendImg(folder, elements) {
   if (!elements) return;
   document.querySelector(`.list`).innerHTML = "";
-  for (x of elements) {
+  for (const [i, x] of elements.entries()) {
     const imgLink = `img/${folder}${x.path}`;
     const a = document.createElement("a");
     a.setAttribute("data-fslightbox", folder);
@@ -51,6 +51,15 @@ function appendImg(folder, elements) {
     const img = document.createElement("img");
     img.src = imgLink;
     a.appendChild(img);
+
+    if (!['child','belt','gallery'].includes(folder)) {
+      const label = document.createElement("div");
+      label.innerText = i+1;
+      label.className = 'label';
+      img.classList.add("with-border");
+      a.appendChild(label);
+    }
+
     document.querySelector(`.list`).appendChild(a);
     refreshFsLightbox();
   }

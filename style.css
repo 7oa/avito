@@ -6,6 +6,7 @@ html {
 }
 
 .image {
+  position: relative;
   width: 300px;
   height: 300px;
   margin: 10px;
@@ -23,6 +24,11 @@ html {
 .image img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.with-border {
+  border: 1px solid;
+  border-color: rgba(0,0,0,0.1);
 }
 
 .list {
@@ -63,4 +69,19 @@ html {
 
 .logo img {
   max-height: 100%;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  text-decoration: none;
+  padding: 3px 5px;
+}
+
+@media (max-width: 670px) {
+  .label {
+    font-size: 20px;
+  }
 }
