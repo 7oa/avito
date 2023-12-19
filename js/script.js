@@ -53,16 +53,20 @@ function appendImg(folder, elements) {
     a.appendChild(img);
 
     if (!['child','belt','gallery'].includes(folder)) {
-      const label = document.createElement("div");
-      label.innerText = i+1;
-      label.className = 'label';
       img.classList.add("with-border");
-      a.appendChild(label);
+      setTimeout(() => setLabel(a,i), 2000);
     }
 
     document.querySelector(`.list`).appendChild(a);
     refreshFsLightbox();
   }
+}
+
+function setLabel(a,i) {
+  const label = document.createElement("div");
+  label.innerText = i+1;
+  label.className = 'label';
+  a.appendChild(label);
 }
 
 function setActive(folder) {
